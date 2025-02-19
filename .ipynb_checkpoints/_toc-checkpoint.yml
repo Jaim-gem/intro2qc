@@ -1,0 +1,29 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: welcome
+parts:
+  - caption: Why Computing is Hard
+    chapters:
+    - file: or01
+    - file: or02
+    - file: or03
+    - file: or03b
+  - caption: What's Quantum Computing
+    chapters:
+    - file: or04
+    - file: or05
+    - file: or05b
+    - file: or06
+    - file: or07
+    - file: or08
+  - caption: Quantum Programming
+    chapters:
+    - file: orp01
+    - file: orp02
+    - file: orp03
+  - caption: Back Matter
+    chapters: 
+    - file: feedback
+    - file: acknowledgements

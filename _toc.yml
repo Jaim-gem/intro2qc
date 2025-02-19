@@ -25,4 +25,5 @@ parts:
     - file: orp03
   - caption: Back Matter
     chapters: 
+    - file: feedback
     - file: acknowledgements
