@@ -1,0 +1,647 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Essence of Computation &#8212; Intro to Quantum Computing</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'or04';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Quantum Bits" href="or05.html" />
+    <link rel="prev" title="Limitations of Classical Computing" href="or03b.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="welcome.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Intro to Quantum Computing - Home"/>
+    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt="Intro to Quantum Computing - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="welcome.html">
+                    Welcome 👋
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Why Computing is Hard</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="or01.html">Optimization Problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="or02.html">Bits and Dits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="or03.html">Combinatorial Problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="or03b.html">Limitations of Classical Computing</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">What's Quantum Computing</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Essence of Computation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="or05.html">Quantum Bits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="or05b.html">Quantum Interference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="or06.html">Quantum Superposition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="or07.html">Quantum Entanglement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="or08.html">Quantum Computation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Quantum Programming</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="orp01.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="orp02.html">Programming Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="orp03.html">Extras</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Back Matter</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="acknowledgements.html">Acknowledgments</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/Jaim-gem/intro2qc/main?urlpath=tree/docs/or04.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/Jaim-gem/intro2qc" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Jaim-gem/intro2qc/issues/new?title=Issue%20on%20page%20%2For04.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/or04.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Essence of Computation</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-and-information">Data and Information</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#physical-bits">Physical bits</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computers">Computers</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <p><img alt="section2_cover" src="_images/58.jpg" /></p>
+<p> </p>
+<div class="tip admonition">
+<p class="admonition-title">Section Objectives</p>
+<ul class="simple">
+<li><p>to understand how <strong>computation</strong> works in a physical sense</p></li>
+<li><p>to introduce <strong>quantum computation</strong> and illustrate <strong>quantum properties</strong></p></li>
+</ul>
+</div>
+<p> </p>
+<section class="tex2jax_ignore mathjax_ignore" id="essence-of-computation">
+<h1>Essence of Computation<a class="headerlink" href="#essence-of-computation" title="Link to this heading">#</a></h1>
+<p>Here are some interesting questions that you can ask yourself.</p>
+<ul class="simple">
+<li><p><strong>What are bits, physically?</strong></p></li>
+<li><p><strong>What is a computer, actually?</strong></p></li>
+<li><p><strong>What <em>is</em> and what <em>isn’t</em> a computer?</strong></p></li>
+<li><p><strong>Can a molecule be a computer?</strong></p></li>
+</ul>
+<p> </p>
+<p>Let’s start with a conventional definition of a computer for now.</p>
+<blockquote>
+<div><p>A <strong>computer</strong> is an electronic device that processes information (data) to perform specific tasks. It takes input, processes it using instructions (programs), and produces output. Computers are designed to follow precise instructions step by step, making them powerful tools for solving problems, storing data, and automating tasks.</p>
+<p><em>ChatGPT</em></p>
+</div></blockquote>
+<p> </p>
+<section id="data-and-information">
+<h2>Data and Information<a class="headerlink" href="#data-and-information" title="Link to this heading">#</a></h2>
+<p>From the ChatGPT definition, we notice that the words “information”, “data” as well as “instructions” are emphasized. We also want to go back to the definition of a <em>bi</em> as a “<em>unit of computational information</em>”. Some might say it’s the most basic unit of <strong>data</strong>.</p>
+<p>But what is <strong>information</strong>  and what is <strong>data</strong>?</p>
+<p>When you think about it, information is <strong>everywhere</strong>, whether from texts that we read, to audio that we listen to, the photos on our phone.</p>
+<ul class="simple">
+<li><p><strong>Data</strong> is a way to record the <strong>state</strong> of something.</p></li>
+<li><p><strong>Information</strong> is the <em>interpretation</em> of that data.</p></li>
+</ul>
+<p>Let’s say we have an instrument that measures the intensity of light hitting it. One second, it reads ‘100’, and the other second it reads ‘150’. The <strong>data</strong> are <em>the assigned numbers</em>, but the <strong>information</strong> is the <em>interpretation</em> of what those numbers represent.</p>
+<p> </p>
+</section>
+<section id="physical-bits">
+<h2>Physical bits<a class="headerlink" href="#physical-bits" title="Link to this heading">#</a></h2>
+<p>So we’ve talked about <strong>bits</strong> as these abstract units of <strong>data</strong> and <strong>information</strong>. But bits are also physical! Digital bits represent the <strong>information</strong> on the <strong>state</strong> of some <strong>physical</strong> object. Here are some examples.</p>
+<ul class="simple">
+<li><p>We can read out the voltage of tiny <strong>integrated circuits (ICs)</strong> or the states of <strong>transistors</strong>. If the voltage level is beyond a particular threshold, it is ‘<strong>high’</strong> or <code class="docutils literal notranslate"><span class="pre">1</span></code>,** and if it is below that threshold, it is ‘<strong>low’</strong>  or <code class="docutils literal notranslate"><span class="pre">0</span></code>.  If a <strong>transistor</strong>  is on, it is in <code class="docutils literal notranslate"><span class="pre">1</span></code> state and if it is off, it is in the <code class="docutils literal notranslate"><span class="pre">0</span></code> state.</p></li>
+<li><p><strong>Hard drive technology</strong> uses magnetic material and reads out the magnetic orientation of defined regions of the material (called <strong>magnetic domains</strong>).</p></li>
+<li><p><strong>CD technology</strong> uses <strong>pits</strong> and <strong>lands</strong> on a <strong>polycarbonate material</strong> to encode information.  In the read out, a <strong>laser</strong> is focussed on the material as there is a difference in the reflection off the pits and the lands. The state <code class="docutils literal notranslate"><span class="pre">1</span></code> is read when there is a change from <em>pit-to-land</em> or <em>land-to-pit</em>, and a state <code class="docutils literal notranslate"><span class="pre">0</span></code> if there is no change.</p></li>
+</ul>
+<p><img alt="transistor" src="_images/87.jpg" /></p>
+</section>
+<section id="computers">
+<h2>Computers<a class="headerlink" href="#computers" title="Link to this heading">#</a></h2>
+<p>The fact that the knowledge of the state of some physical system represents <strong>information</strong> that may be used for computation really puts things into perspective as to what things can or can’t be considered a <strong>computer.</strong></p>
+<p>Technically, a <strong>computer</strong> is anything that is able to do <strong>computation</strong>, i.e. receive input, process the input according to some instructions, and give an output.</p>
+<p><img alt="comp" src="_images/86.jpg" /></p>
+<p>Outside of our conventional understanding of a computer, here are <em>other examples</em>.</p>
+<ul class="simple">
+<li><p><strong>Embedded systems</strong>, e.g. cars, medical devices, wearable technology, home appliances (refrigerators, washing machines, thermostats)</p></li>
+<li><p><strong>Analog computers</strong> can use <em>mechanics</em> or <em>hydraulic</em> properties to compute.</p></li>
+<li><p><strong>The brain</strong> because, of course.</p></li>
+<li><p><strong>DNA computers</strong> use strands of DNA with the sequence of nucleotides [adenine (A), thymine (T), cytosine (C), guanine (G)] to compute via biochemical reactions. A and T are ‘0’ and C and G are ‘1’.</p></li>
+</ul>
+<p> </p>
+<p>So yes, <strong>molecules, chemical</strong> and <strong>biological systems</strong>  might be used for computing.</p>
+<p>There is a key point here though. Whilst they may be able to process input information and give output, they should also be <strong>programmable</strong>. If we are able to program or manipulate the states of chemical or biological systems fairly well, then they can be used for computation/</p>
+<p>The key take-aways are:</p>
+<ol class="arabic simple">
+<li><p><strong>Input encoding</strong></p></li>
+<li><p><strong>Output decoding</strong></p></li>
+<li><p><strong>Information processing</strong></p></li>
+<li><p><strong>Programmability</strong></p></li>
+</ol>
+<p> </p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "Jaim-gem/intro2qc",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="or03b.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Limitations of Classical Computing</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="or05.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Quantum Bits</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-and-information">Data and Information</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#physical-bits">Physical bits</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computers">Computers</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Jaimie Greasley
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
