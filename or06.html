@@ -453,31 +453,31 @@
 <h1>Quantum Superposition<a class="headerlink" href="#quantum-superposition" title="Link to this heading">#</a></h1>
 <p> </p>
 <p><strong>Superposition</strong> is exactly what was discussed before. It’s the ability of a quantum bit to be in both the <code class="docutils literal notranslate"><span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">1</span></code> state at the same time.</p>
-<p>But here’s a strange detail… A qubit can only be in <em>superposition</em> <strong>once we’re not watching it!</strong></p>
+<p>However, here’s a strange detail… A qubit can only be in <em>superposition</em> <strong>once we’ve not looked at it!</strong></p>
 <p> </p>
 <section id="schrodinger-s-cat">
 <h2>Schrödinger’s cat 🐈<a class="headerlink" href="#schrodinger-s-cat" title="Link to this heading">#</a></h2>
 <p>Imagine you have a cat in a box. It’s a quantum cat, <em>obviously</em>.</p>
 <p>Whilst it is in the box, it can be in a superposition of being in the <code class="docutils literal notranslate"><span class="pre">alive</span></code> state or the <code class="docutils literal notranslate"><span class="pre">dead</span></code> state. However, you decide to open the box, and find that the cat is <code class="docutils literal notranslate"><span class="pre">dead</span></code>. You make another quantum cat in a similar way, and open to find that this cat is <code class="docutils literal notranslate"><span class="pre">alive</span></code>.</p>
-<p>This is called <strong>wave-function collapse</strong>. The act of <em>observing</em> the quantum cat is actually a <strong>measurement</strong>. Measurements disturb <strong>quantum systems</strong> causing them to lose their quantumness.</p>
+<p>This is called <strong>wave-function collapse</strong>. The act of <em>observing</em> the quantum cat is actually a <strong>measurement</strong>. Measurements disturb quantum systems, causing them to lose their quantumness.</p>
 <p><img alt="collapse" src="_images/73.jpg" /></p>
 <p> </p>
-<p><strong>How might we describe the state of the cat when it was in the box based on observations?</strong> 🧠</p>
+<p><strong>How might we describe the state of the cat when it was in the box, based on our observations?</strong> 🧠</p>
 <div class="tip dropdown admonition">
 <p class="admonition-title">Answer</p>
-<p>We will need to <strong>count</strong> and <strong>take statistics</strong> on the number of times we see the cat alive versus the opposite outcome.</p>
-<p>The truth is that the higher dimensional state of the qubit <strong>collapses</strong> into a <strong>classical state</strong> once we observe it. In order to describe the state of the qubit before collapse, we must have multiple qubits prepared in the same way,  make multiple observations, and take statistics of those observations in order to recover the qubit state prior to collapse.</p>
+<p>We’d need to <em>count</em> and <em>take statistics</em> on the number of times we see the cat alive versus the opposite outcome.</p>
+<p>The truth is that the higher dimensional state of the qubit <strong>collapses</strong> into a classical state once we observe it. In order to describe the state of the qubit before collapse, we must have multiple qubits prepared in the same way,  make multiple observations, and take statistics of those observations in order to recover the qubit state prior to collapse.</p>
 <div class="math notranslate nohighlight">
 \[
 \text{Qubit state} = c_0\times \text{state } \mathbf{0} + c_1 \times \text{state }\mathbf{1}
 \]</div>
-<p>Here, the numbers <span class="math notranslate nohighlight">\(c_0\)</span>  and <span class="math notranslate nohighlight">\(c_1\)</span> are <em>related</em> to the probabilities for observing that state.</p>
+<p>Here, the numbers <span class="math notranslate nohighlight">\(c_0\)</span>  and <span class="math notranslate nohighlight">\(c_1\)</span> are related to the probabilities for observing that state.</p>
 </div>
 <p> </p>
 <p><strong>How might the state of a qudit or quantum dit be represented?</strong> 🧠</p>
 <div class="tip dropdown admonition">
 <p class="admonition-title">Answer</p>
-<p>A <strong>qubit</strong> can only collapse onto 1 of <strong>2 possible states</strong>. A <strong>qudit</strong> can collapse onto 1 of <strong>d possible states.</strong></p>
+<p>A <strong>qubit</strong> can only collapse onto 1 of 2 possible states. A <strong>qudit</strong> can collapse onto 1 of <strong>d possible states.</strong></p>
 <div class="math notranslate nohighlight">
 \[
 \text{Qudit state} = c_0\times \text{state }\mathbf{0} + c_1 \times \text{state }\mathbf{1} + c_2 \times \text{state }\mathbf{2} + ... + c_{d-1}\times \text{state }\mathbf{d-1}
