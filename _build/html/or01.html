@@ -469,18 +469,17 @@
 <h1>Optimization Problems<a class="headerlink" href="#optimization-problems" title="Link to this heading">#</a></h1>
 <p> </p>
 <p>Optimization-type problems are commonplace in everyday life. Consider the scenario outlined in the section below.</p>
-<p> </p>
 <section id="how-to-have-the-perfect-day">
 <h2>How to have the perfect day 👌<a class="headerlink" href="#how-to-have-the-perfect-day" title="Link to this heading">#</a></h2>
 <p> </p>
 <p>In our daily lives, we make a lot of decisions. In fact, the average human being makes around <strong>35 000 decisions</strong> in a day. From small decisions like deciding to take a sip of water, to more deliberate actions like how to reply to a message. What if we knew <strong>exactly</strong> what choices we need to make in order to have the <strong>best day possible</strong>?</p>
-<p>Imagine we have a  <em>special type of calculator</em> that tells us how optimal our day was. We tell this <strong>calculator</strong> all the decisions we made that day (<strong>input</strong>) and it calculates for us how optimally we spent our day out of 100% (<strong>output</strong>). As it’s calculating it takes into consideration the work we did, the fun we had, the amount of rest we got etc.</p>
-<p>For now, let’s keep it <em>simple</em>. Let’s say we want to develop the perfect morning routine that <em>leads</em> to the best day ever. For our particular morning routine, there are only 3 decisions to make: (1) the time we get up, (2) our choice of what to drink, and (3) our choice of what to eat for breakfast.</p>
+<p>Imagine we have a  special type of <strong>calculator</strong> that tells us how optimal our day was. We tell this calculator all the decisions we made that day (<strong>input</strong>) and it calculates for us how optimally we spent the day out of 100% (<strong>output</strong>). As it’s calculating, it takes into consideration the work we did, the fun we had, the amount of rest we got etc.</p>
+<p>For now, let’s keep it simple. Let’s say we want to develop the <em>perfect morning routine</em> that leads to the best day ever. For our particular morning routine, there are only 3 decisions to make: (1) the time we get up, (2) our choice of what to drink, and (3) our choice of what to eat as breakfast.</p>
 <p> </p>
 <p><img alt="morning_routine" src="_images/10.jpg" /></p>
 <p> </p>
 <p>For the first decision of the day, we have 3 options: to wake up at 5:30 am, to wake up at 6:00 am or to wake up at 6:30 am.  For the second decision of the day, we choose whether to drink coffee or tea. For the third decision, we decide exactly what we want to have for breakfast.</p>
-<p>One example of a decision combination is to choose to wake up at 5:30am, choose to eat breakfast first and finally choose to eat eggs.</p>
+<p>One example of a routine that we can choose is to wake up at 5:30am, choose to drink tea, and finally choose to eat eggs.</p>
 <p> </p>
 <p><img alt="decision1" src="_images/11.jpg" /></p>
 <p> </p>
@@ -490,7 +489,7 @@
 <p>There are <strong>30</strong> morning routines possible from the options given.</p>
 <p>We can solve this using the diagram. If we fix the first two decisions, we will always have 5 possible morning routines from the options given for the last decision.</p>
 <p><img alt="decision2" src="_images/16.jpg" /></p>
-<p>If we keep the first decision fixed and change the second now, we will also get another 5 routines from the options for the last decision.</p>
+<p>Then, if we keep the first decision fixed and change the second, we will also get another 5 routines from the options of the last decision.</p>
 <p><img alt="decision3" src="_images/17.jpg" /></p>
 <p>If we continue in this manner, we obtain 30 routines in total.</p>
 <p><img alt="decision3" src="_images/21.jpg" /></p>
@@ -498,18 +497,18 @@
 <p> </p>
 <div class="dropdown admonition note">
 <p class="admonition-title">Note</p>
-<p>The <em>first decision</em> of the day represents the <strong>first variable</strong> of the problem with <strong>3 degrees of freedom</strong>. The <em>second decision</em> is the <strong>second variable</strong> of the problem with <strong>2 degrees of freedom</strong>. The <em>third decision</em> is the third variable with <strong>5 degrees of freedom</strong>. The total morning routines we can have are obtained by multiplying the the degrees of freedom for each variable together.</p>
+<p>The first decision of the day represents the <strong>first variable</strong> of the problem with <strong>3 degrees of freedom</strong>. The second decision is the <strong>second variable</strong> of the problem with <strong>2 degrees of freedom</strong>. The third decision is the third variable with <strong>5 degrees of freedom</strong>. The total morning routines we can have are obtained by multiplying the degrees of freedom for each variable together.</p>
 <p><img alt="decision4" src="_images/22.jpg" /></p>
 <div class="math notranslate nohighlight">
 \[
-\text{Total combination of decisions} = 3\times 2\times 5 = 30
+\text{Total morning routines} = 3\times 2\times 5 = 30
 \]</div>
 </div>
 <p> </p>
 <p><strong>Which decision combo gives the best result?</strong> 🧠</p>
 <div class="tip dropdown admonition">
 <p class="admonition-title">Answer</p>
-<p>To get the answer to this, we need to run each of the 30 combinations through our special calculator in order to see which one gives us the best result. Since we do not have a full idea of how our calculator is computing, we must use <strong>brute-force</strong> and check each output one-by-one to see what gives the best results.</p>
+<p>To get the answer to this, we need to run each of the 30 combinations through our special calculator in order to see which one gives us the best result. Since we do not have a full idea of how our calculator is computing, we must use <strong>brute-force</strong> and compute the outputs <em>one by one</em> to see which input gives the best result.</p>
 </div>
 <section id="formula">
 <h3>Formula<a class="headerlink" href="#formula" title="Link to this heading">#</a></h3>
@@ -543,7 +542,7 @@
 </section>
 <section id="why-computing-is-hard">
 <h2>Why computing is hard<a class="headerlink" href="#why-computing-is-hard" title="Link to this heading">#</a></h2>
-<p>Many of these problems are still extremely difficult to compute. Once the number of variables in the problem and/or the number of degrees of freedom for each variable becomes big, then the total number of possible combinations becomes incredibly large. This is called <strong>combinatorial explosion</strong>!</p>
+<p>Many of these problems are still extremely difficult to compute. Once the number of variables <span class="math notranslate nohighlight">\(n\)</span> in the problem and/or the degrees of freedom <span class="math notranslate nohighlight">\(d\)</span> for each variable becomes big, then the total number of possible combinations becomes incredibly large. This is called <strong>combinatorial explosion</strong>!</p>
 <p> </p>
 </section>
 </section>

@@ -44,7 +44,7 @@ We'll bring up some real-world challenges and how computation plays a role.
 :::
 
 :::{grid-item-card}
-:link: notebooks
+:link: or04
 :link-type: doc
 :class-header: bg-light
 
