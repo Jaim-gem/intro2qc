@@ -1,33 +1,19 @@
 # Intro to Quantum Computing
 
-Intro to Quantum Computing workshop 2025
+Intro to Quantum Computing workshop 2025 organized by Let's Talk Science and supported in part by the Digital Research Alliance of Canada.
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Jaim-gem/intro2qc/HEAD)
 
 ## Usage
 
-### Building the book
-
-If you'd like to develop and/or build the Intro to Quantum Computing book, you should:
-
-1. Clone this repository
-2. Run `pip install -r requirements.txt` (it is recommended you do this within a virtual environment)
-3. (Optional) Edit the books source files located in the `intro2qc/` directory
-4. Run `jupyter-book clean intro2qc/` to remove any existing builds
-5. Run `jupyter-book build intro2qc/`
-
-A fully-rendered HTML version of the book will be built in `intro2qc/_build/html/`.
-
-### Hosting the book
-
-Please see the [Jupyter Book documentation](https://jupyterbook.org/publish/web.html) to discover options for deploying a book online using services such as GitHub, GitLab, or Netlify.
-
-For GitHub and GitLab deployment specifically, the [cookiecutter-jupyter-book](https://github.com/executablebooks/cookiecutter-jupyter-book) includes templates for, and information about, optional continuous integration (CI) workflow files to help easily and automatically deploy books online with GitHub or GitLab. For example, if you chose `github` for the `include_ci` cookiecutter option, your book template was created with a GitHub actions workflow file that, once pushed to GitHub, automatically renders and pushes your book to the `gh-pages` branch of your repo and hosts it on GitHub Pages when a push or pull request is made to the main branch.
-
-## Contributors
-
-We welcome and recognize all contributions. You can see a list of current contributors in the [contributors tab](https://github.com/Jaim-gem/intro2qc/graphs/contributors).
+Navigate to [intro2qc.uvic.ca](https://intro2qc.uvic.ca). 
 
 ## Credits
 
-This project is created using the excellent open source [Jupyter Book project](https://jupyterbook.org/) and the [executablebooks/cookiecutter-jupyter-book template](https://github.com/executablebooks/cookiecutter-jupyter-book).
+This project is created using the open source [Jupyter Book project](https://jupyterbook.org/) and the [executablebooks/cookiecutter-jupyter-book template](https://github.com/executablebooks/cookiecutter-jupyter-book).
+
+
+## License 
+The creative content in this repository, including but not limited to text, images, and instructional materials, is licensed under the Creative Commons Attribution-NoDerivatives (CC BY-ND) License. This means you are free to share the material as long as you give appropriate credit, but you may not modify or adapt it.
+
+The code contained in the workbook is licensed under the MIT License, permitting free use, modification, distribution, and sublicensing with attribution.
