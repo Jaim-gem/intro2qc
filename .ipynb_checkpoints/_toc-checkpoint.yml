@@ -10,6 +10,7 @@ parts:
     - file: or02
     - file: or03
     - file: or03b
+    - file: or03c
   - caption: What's Quantum Computing
     chapters:
     - file: or04
